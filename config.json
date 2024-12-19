@@ -1,0 +1,45 @@
+{
+  "max_per_row": 4,
+  "buttons": [
+    {
+      "label": "Ahhh",
+      "audio": "/usr/share/soundboard/sounds/ahhh.wav"
+    },
+    {
+      "label": "Android Beep",
+      "audio": "/usr/share/soundboard/sounds/android-beep.wav"
+    },
+    {
+      "label": "Fart",
+      "audio": "/usr/share/soundboard/sounds/fart.wav"
+    },
+    {
+      "label": "Hey Guys",
+      "audio": "/usr/share/soundboard/sounds/hey-guys-whats-going-on.wav"
+    },
+    {
+      "label": "Kahoot",
+      "audio": "/usr/share/soundboard/sounds/kahoot.wav"
+    },
+    {
+      "label": "Snore Mimimimi",
+      "audio": "/usr/share/soundboard/sounds/snore-mimimimimimi.wav"
+    },
+    {
+      "label": "Sus",
+      "audio": "/usr/share/soundboard/sounds/sus.wav"
+    },
+    {
+      "label": "Vine Boom",
+      "audio": "/usr/share/soundboard/sounds/vine-boom.wav"
+    },
+    {
+      "label": "Windows Error",
+      "audio": "/usr/share/soundboard/sounds/win-error.wav"
+    },
+    {
+      "label": "Windows XP Shutdown",
+      "audio": "/usr/share/soundboard/sounds/winxp-shutdown.wav"
+    }
+  ]
+}
