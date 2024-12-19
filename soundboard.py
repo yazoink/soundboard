@@ -9,7 +9,8 @@ from os import path, environ
 from json import loads as json_loads
 from functools import partial
 import subprocess
-import threading
+
+PROCESSES = []
 
 def main():
     config = get_config()
@@ -22,12 +23,17 @@ def main():
         orientation=Gtk.Orientation.VERTICAL
     )
 
+    stop_button = Gtk.Button(label="Stop All")
+    stop_button.connect("clicked", stop_all)
+
+    vbox.pack_start(stop_button, True, True, 0)
+
     buttons = []
     i = 0
 
     for b in config["buttons"]:
         buttons.append(Gtk.Button(label=b["label"]))
-        buttons[i].connect("clicked", partial(on_button_clicked, b["audio"]))
+        buttons[i].connect("clicked", partial(play_sound, b["audio"]))
         i += 1
 
     button_num = len(buttons)
@@ -56,6 +62,12 @@ def main():
     win.connect("destroy", Gtk.main_quit)
     win.show_all()
     Gtk.main()
+    stop_all()
+
+def stop_all(_=""):
+    global PROCESSES
+    for p in PROCESSES:
+        p.kill()
 
 def get_config():
     config = {}
@@ -136,11 +148,9 @@ def get_config():
 
     return config
 
-def on_button_clicked(audio, _):
-    t = threading.Thread(target=play_sound, args=(audio,))
-    t.start()
-
-def play_sound(audio):
-    subprocess.run(["aplay", audio])
+def play_sound(audio, _):
+    global PROCESSES
+    s = subprocess.Popen(["aplay", audio])
+    PROCESSES.append(s)
 
 main()
